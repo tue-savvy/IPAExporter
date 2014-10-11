@@ -59,6 +59,6 @@
     self.signingIdentities = result;
 }
 - (BOOL)isExpired {
-    return [[NSDate date] compare:self.expirationDate] == NSOrderedAscending;
+    return [[NSDate date] compare:self.expirationDate] == NSOrderedDescending;
 }
 @end

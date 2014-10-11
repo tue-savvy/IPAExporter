@@ -60,6 +60,8 @@
 		81AC548419E90AC1004C2C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		81AC548619E94A23004C2C3C /* DirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
 		81AC548719E94A23004C2C3C /* DirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryWatcher.m; sourceTree = "<group>"; };
+		81AC548919E9534E004C2C3C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		81AC548A19E9534E004C2C3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,8 @@
 				81AC548219E908F6004C2C3C /* UI */,
 				81AB04C919E83963002C4964 /* Supporting Files */,
 				81AC548419E90AC1004C2C3C /* Images.xcassets */,
+				81AC548919E9534E004C2C3C /* LICENSE.txt */,
+				81AC548A19E9534E004C2C3C /* README.md */,
 			);
 			path = IPAExporter;
 			sourceTree = "<group>";

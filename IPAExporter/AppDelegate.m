@@ -35,6 +35,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self loadXcodeArchives];
+    [self registerDirectoryWatcher];
 }
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
     
@@ -103,7 +104,7 @@
 - (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
     TableAppCellView *view = [tableView makeViewWithIdentifier:[tableColumn identifier] owner:self];
     XcodeArchive *archive = [self tableView:tableView objectValueForTableColumn:tableColumn row:row];
-    view.textField.stringValue = archive.name;
+    view.textField.stringValue = archive.applicationName;
     view.creationLabel.stringValue = [archive.creationDate relativeTime];
     view.imageView.image = archive.applicationIcon;
     return view;

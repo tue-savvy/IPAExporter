@@ -9,6 +9,7 @@
 #import "ExportWindowController.h"
 #import "Provisioning.h"
 #import "XcodeArchive.h"
+#import "NSDate+Relative.h"
 
 #define LastSelectPathKey @"LastPath"
 
@@ -22,6 +23,14 @@
 @property (strong) IBOutlet NSTextField *destinationTextField;
 @property (strong) IBOutlet NSButton *changeDestButton;
 @property (strong) IBOutlet NSButton *cancelButton;
+
+@property (weak) IBOutlet NSImageView *selectedArchiveImageView;
+@property (weak) IBOutlet NSTextField *selectedAppName;
+@property (weak) IBOutlet NSTextField *selectedProjectName;
+@property (weak) IBOutlet NSTextField *selectedCreationDate;
+@property (weak) IBOutlet NSTextField *selectedVersion;
+@property (weak) IBOutlet NSTextField *selectedIdentifier;
+
 @property (nonatomic, strong) NSTask *exportingTask;
 @end
 
@@ -30,6 +39,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     self.provisioningArray = [NSMutableArray array];
+    
     [self buildListIdentity];
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:LastSelectPathKey]) {
@@ -38,6 +48,40 @@
         NSString *desktop = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) firstObject];
         self.destinationTextField.stringValue = [desktop stringByAppendingPathComponent:[self.archive.name stringByAppendingPathExtension:@"ipa"]];
     }
+    [self updateArchiveInfo:self.archive];
+    [self lookupBestIdentity];
+}
+
+- (void)setArchive:(XcodeArchive *)archive {
+    _archive = archive;
+    if ([self isWindowLoaded]) {
+        [self updateArchiveInfo:_archive];
+        [self lookupBestIdentity];
+    }
+}
+
+- (void)updateArchiveInfo:(XcodeArchive *)selectedArchive {
+    self.selectedArchiveImageView.image = selectedArchive.applicationIcon;
+    self.selectedAppName.stringValue = selectedArchive.applicationName;
+    self.selectedProjectName.stringValue = selectedArchive.name;
+    
+    self.selectedCreationDate.attributedStringValue = [self attributedStringWithTitle:@"Creation Date: " value:[selectedArchive.creationDate relativeTime]];
+    self.selectedVersion.attributedStringValue = [self attributedStringWithTitle:@"Version: " value:selectedArchive.version];
+    self.selectedIdentifier.attributedStringValue = [self attributedStringWithTitle:@"Identifier: " value:selectedArchive.bundleID];
+}
+- (NSAttributedString *)attributedStringWithTitle:(NSString *)title value:(NSString *)value {
+    if (value == nil) value = @"";
+    
+    NSFont *boldFont = [NSFont boldSystemFontOfSize:12];
+    NSFont *normalFont = [NSFont systemFontOfSize:12];
+    NSDictionary *boldStyle = @{NSFontAttributeName:boldFont};
+    NSDictionary *normalStyle = @{NSFontAttributeName:normalFont};
+    
+    NSAttributedString *titleAttr = [[NSAttributedString alloc] initWithString:title attributes:boldStyle];
+    NSAttributedString *valueAttr = [[NSAttributedString alloc] initWithString:value attributes:normalStyle];
+    NSMutableAttributedString *finalString = [[NSMutableAttributedString alloc] initWithAttributedString:titleAttr];
+    [finalString appendAttributedString:valueAttr];
+    return finalString;
 }
 
 - (IBAction)export:(id)sender {
@@ -81,6 +125,10 @@
     }
     [self.provisioningArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
     for (Provisioning *provision in self.provisioningArray) {
+        //Ignore expired provisioning
+        if (provision.isExpired) continue;
+        
+        
         NSMenuItem *item = [[NSMenuItem alloc] init];
         item.title = [NSString stringWithFormat:@"%@ (%@)", provision.name, provision.applicationIdentifier];
         
@@ -144,5 +192,27 @@
         }
     }];
     
+}
+- (IBAction)reloadIdentities:(id)sender {
+    [self buildListIdentity];
+}
+- (void)lookupBestIdentity {
+    
+    NSString *applicationPath = [self.archive absoluteApplicationPath];
+    NSString *embededProvision = [applicationPath stringByAppendingPathComponent:@"embedded.mobileprovision"];
+    Provisioning *embed = [[Provisioning alloc] initWithPath:embededProvision];
+    SigningIdentity *identity = [embed.signingIdentities firstObject];
+    if (!identity) return;
+    
+    for (NSInteger index = 0; index < self.popupButton.numberOfItems; index++) {
+        NSMenuItem *item = [self.popupButton itemAtIndex:index];
+        SigningIdentity *itemSigning = item.representedObject;
+        if (!itemSigning) continue;
+        
+        if ([identity.commonName isEqualTo:itemSigning.commonName]) {
+            [self.popupButton selectItemAtIndex:index];
+            break;
+        }
+    }
 }
 @end

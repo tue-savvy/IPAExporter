@@ -20,6 +20,7 @@
 		81AB04EE19E85376002C4964 /* TableAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB04ED19E85376002C4964 /* TableAppCellView.m */; };
 		81AB04F119E855A2002C4964 /* XcodeArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB04F019E855A2002C4964 /* XcodeArchive.m */; };
 		81AC548519E90AC1004C2C3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AC548419E90AC1004C2C3C /* Images.xcassets */; };
+		81AC548819E94A23004C2C3C /* DirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AC548719E94A23004C2C3C /* DirectoryWatcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		81AB04EF19E855A2002C4964 /* XcodeArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeArchive.h; sourceTree = "<group>"; };
 		81AB04F019E855A2002C4964 /* XcodeArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeArchive.m; sourceTree = "<group>"; };
 		81AC548419E90AC1004C2C3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		81AC548619E94A23004C2C3C /* DirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
+		81AC548719E94A23004C2C3C /* DirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryWatcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,8 @@
 		81AC548319E908FE004C2C3C /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				81AC548619E94A23004C2C3C /* DirectoryWatcher.h */,
+				81AC548719E94A23004C2C3C /* DirectoryWatcher.m */,
 				814A0F6419E8B7570023B1A5 /* NSDate+Relative.h */,
 				814A0F6519E8B7570023B1A5 /* NSDate+Relative.m */,
 			);
@@ -216,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = HOME;
+				ORGANIZATIONNAME = Pharaoh;
 				TargetAttributes = {
 					81AB04C519E83963002C4964 = {
 						CreatedOnToolsVersion = 6.0;
@@ -280,6 +285,7 @@
 				814A0F6E19E8D6B30023B1A5 /* SigningIdentity.m in Sources */,
 				81AB04F119E855A2002C4964 /* XcodeArchive.m in Sources */,
 				814A0F6619E8B7570023B1A5 /* NSDate+Relative.m in Sources */,
+				81AC548819E94A23004C2C3C /* DirectoryWatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

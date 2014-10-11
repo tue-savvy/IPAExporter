@@ -13,8 +13,9 @@
 #import "TableAppCellView.h"
 #import "NSDate+Relative.h"
 #import "ExportWindowController.h"
+#import "DirectoryWatcher.h"
 
-@interface AppDelegate ()<NSTableViewDataSource, NSTableViewDelegate>
+@interface AppDelegate ()<NSTableViewDataSource, NSTableViewDelegate, DirectoryWatcherDelegate>
 
 @property (weak) IBOutlet NSWindow *window;
 @property (nonatomic, strong) NSMutableArray *archives;
@@ -26,6 +27,7 @@
 @property (weak) IBOutlet NSTextField *selectedCreationDate;
 @property (weak) IBOutlet NSTextField *selectedVersion;
 @property (weak) IBOutlet NSTextField *selectedIdentifier;
+@property (nonatomic, strong) DirectoryWatcher *archiveDirectoryWatcher;
 @property (nonatomic, strong) ExportWindowController *exportWindowController;
 @end
 
@@ -34,13 +36,30 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self loadXcodeArchives];
 }
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
+    
+    if(flag==NO){
+        [self.window makeKeyAndOrderFront:self];
+    }
+    return YES;	
+}
+
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+    // Insert code here to tear down your application
+}
+
+- (NSString *)archiveDirectoryPath {
+    NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *archivesFolderPath = [libraryPath stringByAppendingPathComponent:@"Developer/Xcode/Archives"];
+    return archivesFolderPath;
+}
 
 - (void)loadXcodeArchives {
     NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *libraryPath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *archivesFolderPath = [libraryPath stringByAppendingPathComponent:@"Developer/Xcode/Archives"];
+    NSString *archivesFolderPath = [self archiveDirectoryPath];
     NSArray *contents = [fm contentsOfDirectoryAtPath:archivesFolderPath error:nil];
-    NSLog(@"%@", contents);
+    
     NSMutableArray *allArchives = [NSMutableArray array];
     for (NSString *folder in contents) {
         NSString *subfolder = [archivesFolderPath stringByAppendingPathComponent:folder];
@@ -63,10 +82,17 @@
         self.selectedArchive = nil;
     }
 }
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+- (void)registerDirectoryWatcher {
+    if (self.archiveDirectoryWatcher) return;
+    
+    self.archiveDirectoryWatcher = [DirectoryWatcher watchFolderWithPath:[self archiveDirectoryPath] delegate:self];
 }
+
+#pragma mark - DirectoryWatcherDelegate
+- (void)directoryDidChange:(DirectoryWatcher *)folderWatcher {
+    [self loadXcodeArchives];
+}
+
 #pragma mark - NSTableView
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView {
     return [self.archives count];
@@ -101,6 +127,7 @@
     self.selectedVersion.attributedStringValue = [self attributedStringWithTitle:@"Version: " value:_selectedArchive.version];
     self.selectedIdentifier.attributedStringValue = [self attributedStringWithTitle:@"Identifier: " value:_selectedArchive.bundleID];
 }
+
 - (NSAttributedString *)attributedStringWithTitle:(NSString *)title value:(NSString *)value {
     if (value == nil) value = @"";
     
@@ -115,6 +142,7 @@
     [finalString appendAttributedString:valueAttr];
     return finalString;
 }
+
 - (IBAction)exportIPA:(id)sender {
     if (!self.exportWindowController) {
         self.exportWindowController = [[ExportWindowController alloc] initWithWindowNibName:@"ExportWindowController"];

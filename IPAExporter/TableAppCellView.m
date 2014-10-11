@@ -9,5 +9,16 @@
 #import "TableAppCellView.h"
 
 @implementation TableAppCellView
-
+- (void) setBackgroundStyle:(NSBackgroundStyle)backgroundStyle
+{
+    [super setBackgroundStyle:backgroundStyle];
+    
+    NSTableRowView *row = (NSTableRowView*)self.superview;
+    if (row.isSelected) {
+        self.creationLabel.textColor = [NSColor alternateSelectedControlTextColor];
+    } else {
+        self.creationLabel.textColor = [NSColor grayColor];
+    }
+    
+}
 @end

@@ -1,7 +1,7 @@
 IPA Exporter
 ================
 
-The Mac Application used to export IPA from Xcode Archive
+The Mac Application used to export IPA from Xcode Archive. This app require Xcode command line tools is installed.
 
 ![Screen Shot](/Screenshot/1.png?raw=true "Main Screen")
 

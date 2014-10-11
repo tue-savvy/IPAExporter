@@ -42,12 +42,6 @@
     
     [self buildListIdentity];
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:LastSelectPathKey]) {
-        self.destinationTextField.stringValue = [[NSUserDefaults standardUserDefaults] objectForKey:LastSelectPathKey];
-    } else {
-        NSString *desktop = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) firstObject];
-        self.destinationTextField.stringValue = [desktop stringByAppendingPathComponent:[self.archive.name stringByAppendingPathExtension:@"ipa"]];
-    }
     [self updateArchiveInfo:self.archive];
     [self lookupBestIdentity];
 }
@@ -68,6 +62,13 @@
     self.selectedCreationDate.attributedStringValue = [self attributedStringWithTitle:@"Creation Date: " value:[selectedArchive.creationDate relativeTime]];
     self.selectedVersion.attributedStringValue = [self attributedStringWithTitle:@"Version: " value:selectedArchive.version];
     self.selectedIdentifier.attributedStringValue = [self attributedStringWithTitle:@"Identifier: " value:selectedArchive.bundleID];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:LastSelectPathKey]) {
+        self.destinationTextField.stringValue = [[NSUserDefaults standardUserDefaults] objectForKey:LastSelectPathKey];
+    } else {
+        NSString *desktop = [NSSearchPathForDirectoriesInDomains(NSDesktopDirectory, NSUserDomainMask, YES) firstObject];
+        self.destinationTextField.stringValue = [desktop stringByAppendingPathComponent:[self.archive.name stringByAppendingPathExtension:@"ipa"]];
+    }
 }
 - (NSAttributedString *)attributedStringWithTitle:(NSString *)title value:(NSString *)value {
     if (value == nil) value = @"";

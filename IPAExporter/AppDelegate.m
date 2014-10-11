@@ -27,7 +27,7 @@
 @property (weak) IBOutlet NSTextField *selectedCreationDate;
 @property (weak) IBOutlet NSTextField *selectedVersion;
 @property (weak) IBOutlet NSTextField *selectedIdentifier;
-@property (nonatomic, strong) DirectoryWatcher *archiveDirectoryWatcher;
+@property (nonatomic, strong) NSMutableArray *archiveWatchers;
 @property (nonatomic, strong) ExportWindowController *exportWindowController;
 @end
 
@@ -84,14 +84,32 @@
     }
 }
 - (void)registerDirectoryWatcher {
-    if (self.archiveDirectoryWatcher) return;
+    if (!self.archiveWatchers) self.archiveWatchers = [NSMutableArray array];
+    for (DirectoryWatcher *watcher in self.archiveWatchers) {
+        [watcher invalidate];
+    }
+    NSString *archiveFolder = [self archiveDirectoryPath];
+    DirectoryWatcher *watcher = [DirectoryWatcher watchFolderWithPath:archiveFolder delegate:self];
+    [self.archiveWatchers addObject:watcher];
     
-    self.archiveDirectoryWatcher = [DirectoryWatcher watchFolderWithPath:[self archiveDirectoryPath] delegate:self];
+    NSArray *subfolders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:archiveFolder error:nil];
+    for (NSString *name in subfolders) {
+        if ([name hasPrefix:@"."]) continue;
+        NSString *subPath = [archiveFolder stringByAppendingPathComponent:name];
+        BOOL isDirectory = NO;
+        if ([[NSFileManager defaultManager] fileExistsAtPath:subPath isDirectory:&isDirectory] && isDirectory) {
+            watcher = [DirectoryWatcher watchFolderWithPath:subPath delegate:self];
+            [self.archiveWatchers addObject:watcher];
+        }
+    }
 }
 
 #pragma mark - DirectoryWatcherDelegate
 - (void)directoryDidChange:(DirectoryWatcher *)folderWatcher {
     [self loadXcodeArchives];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self registerDirectoryWatcher];
+    });
 }
 
 #pragma mark - NSTableView

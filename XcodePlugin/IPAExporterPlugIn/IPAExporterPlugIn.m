@@ -47,7 +47,8 @@ static IPAExporterPlugIn *sharedPlugin;
         if (menuItem) {
             [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
             NSInteger organizerIndex = [[menuItem submenu] indexOfItemWithTitle:@"Organizer"];
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Export IPA" action:@selector(doMenuAction) keyEquivalent:@""];
+            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Export IPA" action:@selector(doMenuAction) keyEquivalent:@"8"];
+            actionMenuItem.keyEquivalentModifierMask = NSCommandKeyMask | NSShiftKeyMask;
             [actionMenuItem setTarget:self];
             [[menuItem submenu] insertItem:actionMenuItem atIndex:organizerIndex + 1];
         }

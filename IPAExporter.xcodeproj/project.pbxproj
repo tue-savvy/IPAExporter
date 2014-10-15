@@ -111,6 +111,8 @@
 				81AC548319E908FE004C2C3C /* Common */,
 				81AC548119E908E4004C2C3C /* Models */,
 				81AC548219E908F6004C2C3C /* UI */,
+				81AB04CD19E83963002C4964 /* AppDelegate.h */,
+				81AB04CE19E83963002C4964 /* AppDelegate.m */,
 				81AB04C919E83963002C4964 /* Supporting Files */,
 				81AC548419E90AC1004C2C3C /* Images.xcassets */,
 				81AC548919E9534E004C2C3C /* LICENSE.txt */,
@@ -162,8 +164,6 @@
 		81AC548219E908F6004C2C3C /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				81AB04CD19E83963002C4964 /* AppDelegate.h */,
-				81AB04CE19E83963002C4964 /* AppDelegate.m */,
 				81D2A1F219EF36B00006F5D2 /* ArchiveWindowController.h */,
 				81D2A1F319EF36B00006F5D2 /* ArchiveWindowController.m */,
 				81D2A1F419EF36B00006F5D2 /* ArchiveWindowController.xib */,

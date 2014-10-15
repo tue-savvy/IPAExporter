@@ -1,0 +1,361 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		81D2A1E219EF31630006F5D2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D2A1E119EF31630006F5D2 /* AppKit.framework */; };
+		81D2A1E419EF31630006F5D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D2A1E319EF31630006F5D2 /* Foundation.framework */; };
+		81D2A1E919EF31630006F5D2 /* IPAExporterPlugIn.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A1E819EF31630006F5D2 /* IPAExporterPlugIn.xcscheme */; };
+		81D2A1EC19EF31630006F5D2 /* IPAExporterPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A1EB19EF31630006F5D2 /* IPAExporterPlugIn.m */; };
+		81D2A20619EF3B8C0006F5D2 /* ArchiveWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A20119EF3B8C0006F5D2 /* ArchiveWindowController.m */; };
+		81D2A20719EF3B8C0006F5D2 /* ArchiveWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A20219EF3B8C0006F5D2 /* ArchiveWindowController.xib */; };
+		81D2A20819EF3B8C0006F5D2 /* ExportWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A20419EF3B8C0006F5D2 /* ExportWindowController.m */; };
+		81D2A20919EF3B8C0006F5D2 /* ExportWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A20519EF3B8C0006F5D2 /* ExportWindowController.xib */; };
+		81D2A21219EF3B9D0006F5D2 /* Provisioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A20C19EF3B9D0006F5D2 /* Provisioning.m */; };
+		81D2A21319EF3B9D0006F5D2 /* SigningIdentity.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A20E19EF3B9D0006F5D2 /* SigningIdentity.m */; };
+		81D2A21419EF3B9D0006F5D2 /* XcodeArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A21019EF3B9D0006F5D2 /* XcodeArchive.m */; };
+		81D2A21A19EF3BA20006F5D2 /* DirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A21619EF3BA20006F5D2 /* DirectoryWatcher.m */; };
+		81D2A21B19EF3BA20006F5D2 /* NSDate+Relative.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A21819EF3BA20006F5D2 /* NSDate+Relative.m */; };
+		81D2A21E19EF3D740006F5D2 /* TableAppCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A21D19EF3D740006F5D2 /* TableAppCellView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		81D2A1DE19EF31630006F5D2 /* IPAExporterPlugIn.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IPAExporterPlugIn.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		81D2A1E119EF31630006F5D2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		81D2A1E319EF31630006F5D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		81D2A1E719EF31630006F5D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81D2A1E819EF31630006F5D2 /* IPAExporterPlugIn.xcscheme */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = IPAExporterPlugIn.xcscheme; path = IPAExporterPlugIn.xcodeproj/xcshareddata/xcschemes/IPAExporterPlugIn.xcscheme; sourceTree = SOURCE_ROOT; };
+		81D2A1EA19EF31630006F5D2 /* IPAExporterPlugIn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IPAExporterPlugIn.h; sourceTree = "<group>"; };
+		81D2A1EB19EF31630006F5D2 /* IPAExporterPlugIn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IPAExporterPlugIn.m; sourceTree = "<group>"; };
+		81D2A20019EF3B8C0006F5D2 /* ArchiveWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArchiveWindowController.h; path = ../../IPAExporter/ArchiveWindowController.h; sourceTree = "<group>"; };
+		81D2A20119EF3B8C0006F5D2 /* ArchiveWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArchiveWindowController.m; path = ../../IPAExporter/ArchiveWindowController.m; sourceTree = "<group>"; };
+		81D2A20219EF3B8C0006F5D2 /* ArchiveWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ArchiveWindowController.xib; path = ../../IPAExporter/ArchiveWindowController.xib; sourceTree = "<group>"; };
+		81D2A20319EF3B8C0006F5D2 /* ExportWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExportWindowController.h; path = ../../IPAExporter/ExportWindowController.h; sourceTree = "<group>"; };
+		81D2A20419EF3B8C0006F5D2 /* ExportWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExportWindowController.m; path = ../../IPAExporter/ExportWindowController.m; sourceTree = "<group>"; };
+		81D2A20519EF3B8C0006F5D2 /* ExportWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ExportWindowController.xib; path = ../../IPAExporter/ExportWindowController.xib; sourceTree = "<group>"; };
+		81D2A20B19EF3B9D0006F5D2 /* Provisioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Provisioning.h; sourceTree = "<group>"; };
+		81D2A20C19EF3B9D0006F5D2 /* Provisioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Provisioning.m; sourceTree = "<group>"; };
+		81D2A20D19EF3B9D0006F5D2 /* SigningIdentity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SigningIdentity.h; sourceTree = "<group>"; };
+		81D2A20E19EF3B9D0006F5D2 /* SigningIdentity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SigningIdentity.m; sourceTree = "<group>"; };
+		81D2A20F19EF3B9D0006F5D2 /* XcodeArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XcodeArchive.h; sourceTree = "<group>"; };
+		81D2A21019EF3B9D0006F5D2 /* XcodeArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XcodeArchive.m; sourceTree = "<group>"; };
+		81D2A21519EF3BA20006F5D2 /* DirectoryWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectoryWatcher.h; sourceTree = "<group>"; };
+		81D2A21619EF3BA20006F5D2 /* DirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryWatcher.m; sourceTree = "<group>"; };
+		81D2A21719EF3BA20006F5D2 /* NSDate+Relative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Relative.h"; sourceTree = "<group>"; };
+		81D2A21819EF3BA20006F5D2 /* NSDate+Relative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Relative.m"; sourceTree = "<group>"; };
+		81D2A21C19EF3D740006F5D2 /* TableAppCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableAppCellView.h; path = ../../IPAExporter/TableAppCellView.h; sourceTree = "<group>"; };
+		81D2A21D19EF3D740006F5D2 /* TableAppCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableAppCellView.m; path = ../../IPAExporter/TableAppCellView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		81D2A1DC19EF31630006F5D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D2A1E219EF31630006F5D2 /* AppKit.framework in Frameworks */,
+				81D2A1E419EF31630006F5D2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		81D2A1D519EF31630006F5D2 = {
+			isa = PBXGroup;
+			children = (
+				81D2A1E519EF31630006F5D2 /* IPAExporterPlugIn */,
+				81D2A1E019EF31630006F5D2 /* Frameworks */,
+				81D2A1DF19EF31630006F5D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		81D2A1DF19EF31630006F5D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A1DE19EF31630006F5D2 /* IPAExporterPlugIn.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		81D2A1E019EF31630006F5D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A1E119EF31630006F5D2 /* AppKit.framework */,
+				81D2A1E319EF31630006F5D2 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81D2A1E519EF31630006F5D2 /* IPAExporterPlugIn */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A1EA19EF31630006F5D2 /* IPAExporterPlugIn.h */,
+				81D2A1EB19EF31630006F5D2 /* IPAExporterPlugIn.m */,
+				81D2A21919EF3BA20006F5D2 /* Common */,
+				81D2A21119EF3B9D0006F5D2 /* Models */,
+				81D2A20A19EF3B930006F5D2 /* UI */,
+				81D2A1E619EF31630006F5D2 /* Supporting Files */,
+			);
+			path = IPAExporterPlugIn;
+			sourceTree = "<group>";
+		};
+		81D2A1E619EF31630006F5D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A1E719EF31630006F5D2 /* Info.plist */,
+				81D2A1E819EF31630006F5D2 /* IPAExporterPlugIn.xcscheme */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		81D2A20A19EF3B930006F5D2 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A20019EF3B8C0006F5D2 /* ArchiveWindowController.h */,
+				81D2A20119EF3B8C0006F5D2 /* ArchiveWindowController.m */,
+				81D2A20219EF3B8C0006F5D2 /* ArchiveWindowController.xib */,
+				81D2A20319EF3B8C0006F5D2 /* ExportWindowController.h */,
+				81D2A20419EF3B8C0006F5D2 /* ExportWindowController.m */,
+				81D2A20519EF3B8C0006F5D2 /* ExportWindowController.xib */,
+				81D2A21C19EF3D740006F5D2 /* TableAppCellView.h */,
+				81D2A21D19EF3D740006F5D2 /* TableAppCellView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		81D2A21119EF3B9D0006F5D2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A20B19EF3B9D0006F5D2 /* Provisioning.h */,
+				81D2A20C19EF3B9D0006F5D2 /* Provisioning.m */,
+				81D2A20D19EF3B9D0006F5D2 /* SigningIdentity.h */,
+				81D2A20E19EF3B9D0006F5D2 /* SigningIdentity.m */,
+				81D2A20F19EF3B9D0006F5D2 /* XcodeArchive.h */,
+				81D2A21019EF3B9D0006F5D2 /* XcodeArchive.m */,
+			);
+			name = Models;
+			path = ../../IPAExporter;
+			sourceTree = "<group>";
+		};
+		81D2A21919EF3BA20006F5D2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				81D2A21519EF3BA20006F5D2 /* DirectoryWatcher.h */,
+				81D2A21619EF3BA20006F5D2 /* DirectoryWatcher.m */,
+				81D2A21719EF3BA20006F5D2 /* NSDate+Relative.h */,
+				81D2A21819EF3BA20006F5D2 /* NSDate+Relative.m */,
+			);
+			name = Common;
+			path = ../../IPAExporter;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		81D2A1DD19EF31630006F5D2 /* IPAExporterPlugIn */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 81D2A1EF19EF31630006F5D2 /* Build configuration list for PBXNativeTarget "IPAExporterPlugIn" */;
+			buildPhases = (
+				81D2A1DA19EF31630006F5D2 /* Sources */,
+				81D2A1DB19EF31630006F5D2 /* Resources */,
+				81D2A1DC19EF31630006F5D2 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IPAExporterPlugIn;
+			productName = IPAExporterPlugIn;
+			productReference = 81D2A1DE19EF31630006F5D2 /* IPAExporterPlugIn.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		81D2A1D619EF31630006F5D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = Pharaoh;
+				TargetAttributes = {
+					81D2A1DD19EF31630006F5D2 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+				};
+			};
+			buildConfigurationList = 81D2A1D919EF31630006F5D2 /* Build configuration list for PBXProject "IPAExporterPlugIn" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 81D2A1D519EF31630006F5D2;
+			productRefGroup = 81D2A1DF19EF31630006F5D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				81D2A1DD19EF31630006F5D2 /* IPAExporterPlugIn */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		81D2A1DB19EF31630006F5D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D2A20919EF3B8C0006F5D2 /* ExportWindowController.xib in Resources */,
+				81D2A20719EF3B8C0006F5D2 /* ArchiveWindowController.xib in Resources */,
+				81D2A1E919EF31630006F5D2 /* IPAExporterPlugIn.xcscheme in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		81D2A1DA19EF31630006F5D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				81D2A21219EF3B9D0006F5D2 /* Provisioning.m in Sources */,
+				81D2A20619EF3B8C0006F5D2 /* ArchiveWindowController.m in Sources */,
+				81D2A21B19EF3BA20006F5D2 /* NSDate+Relative.m in Sources */,
+				81D2A21419EF3B9D0006F5D2 /* XcodeArchive.m in Sources */,
+				81D2A20819EF3B8C0006F5D2 /* ExportWindowController.m in Sources */,
+				81D2A21319EF3B9D0006F5D2 /* SigningIdentity.m in Sources */,
+				81D2A21A19EF3BA20006F5D2 /* DirectoryWatcher.m in Sources */,
+				81D2A1EC19EF31630006F5D2 /* IPAExporterPlugIn.m in Sources */,
+				81D2A21E19EF3D740006F5D2 /* TableAppCellView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		81D2A1ED19EF31630006F5D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		81D2A1EE19EF31630006F5D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+			};
+			name = Release;
+		};
+		81D2A1F019EF31630006F5D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = IPAExporterPlugIn/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		81D2A1F119EF31630006F5D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				INFOPLIST_FILE = IPAExporterPlugIn/Info.plist;
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		81D2A1D919EF31630006F5D2 /* Build configuration list for PBXProject "IPAExporterPlugIn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D2A1ED19EF31630006F5D2 /* Debug */,
+				81D2A1EE19EF31630006F5D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		81D2A1EF19EF31630006F5D2 /* Build configuration list for PBXNativeTarget "IPAExporterPlugIn" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81D2A1F019EF31630006F5D2 /* Debug */,
+				81D2A1F119EF31630006F5D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 81D2A1D619EF31630006F5D2 /* Project object */;
+}

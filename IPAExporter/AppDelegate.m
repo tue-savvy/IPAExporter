@@ -39,7 +39,7 @@
 }
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag{
     
-    if(flag==NO){
+    if(flag == NO){
         [self.window makeKeyAndOrderFront:self];
     }
     return YES;	
@@ -57,31 +57,35 @@
 }
 
 - (void)loadXcodeArchives {
-    NSFileManager *fm = [NSFileManager defaultManager];
-    NSString *archivesFolderPath = [self archiveDirectoryPath];
-    NSArray *contents = [fm contentsOfDirectoryAtPath:archivesFolderPath error:nil];
-    
-    NSMutableArray *allArchives = [NSMutableArray array];
-    for (NSString *folder in contents) {
-        NSString *subfolder = [archivesFolderPath stringByAppendingPathComponent:folder];
-        NSArray *archiveFiles = [fm contentsOfDirectoryAtPath:subfolder error:nil];
-        for (NSString *archiveName in archiveFiles) {
-            NSString *archivePath = [subfolder stringByAppendingPathComponent:archiveName];
-            XcodeArchive *archive = [[XcodeArchive alloc] initWithPath:archivePath];
-            if (archive.isValidArchive && archive.isIOSArchive) {
-                [allArchives addObject:archive];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSFileManager *fm = [NSFileManager defaultManager];
+        NSString *archivesFolderPath = [self archiveDirectoryPath];
+        NSArray *contents = [fm contentsOfDirectoryAtPath:archivesFolderPath error:nil];
+        
+        NSMutableArray *allArchives = [NSMutableArray array];
+        for (NSString *folder in contents) {
+            NSString *subfolder = [archivesFolderPath stringByAppendingPathComponent:folder];
+            NSArray *archiveFiles = [fm contentsOfDirectoryAtPath:subfolder error:nil];
+            for (NSString *archiveName in archiveFiles) {
+                NSString *archivePath = [subfolder stringByAppendingPathComponent:archiveName];
+                XcodeArchive *archive = [[XcodeArchive alloc] initWithPath:archivePath];
+                if (archive.isValidArchive && archive.isIOSArchive) {
+                    [allArchives addObject:archive];
+                }
             }
         }
-    }
-    [allArchives sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]]];
-    self.archives = allArchives;
-    [self.tableView reloadData];
-    NSInteger selectedRow = [self.tableView selectedRow];
-    if (selectedRow >= 0 && selectedRow < self.archives.count) {
-        self.selectedArchive = self.archives[selectedRow];
-    } else {
-        self.selectedArchive = nil;
-    }
+        [allArchives sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.archives = allArchives;
+            [self.tableView reloadData];
+            NSInteger selectedRow = [self.tableView selectedRow];
+            if (selectedRow >= 0 && selectedRow < self.archives.count) {
+                self.selectedArchive = self.archives[selectedRow];
+            } else {
+                self.selectedArchive = nil;
+            }
+        });
+    });
 }
 - (void)registerDirectoryWatcher {
     if (!self.archiveWatchers) self.archiveWatchers = [NSMutableArray array];
@@ -163,6 +167,9 @@
 }
 
 - (IBAction)exportIPA:(id)sender {
+    if (!self.selectedArchive) return;
+    
+    
     if (!self.exportWindowController) {
         self.exportWindowController = [[ExportWindowController alloc] initWithWindowNibName:@"ExportWindowController"];
     }

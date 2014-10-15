@@ -11,24 +11,71 @@
 #import <Security/Security.h>
 
 @interface SigningIdentity()
-@property (nonatomic, strong) NSData *certData;
+
 @end
 @implementation SigningIdentity
 - (instancetype)initWithProvision:(Provisioning *)provision certificateData:(NSData *)certificateData {
     self = [super init];
     if (self) {
         self.provision = provision;
-        self.certData = certificateData;
+        _certificateData = certificateData;
         [self _loadCertData];
     }
     return self;
 }
 - (void)_loadCertData {
-    SecCertificateRef certRef = SecCertificateCreateWithData(kCFAllocatorDefault, (__bridge CFDataRef)(self.certData));
+    SecCertificateRef certRef = SecCertificateCreateWithData(kCFAllocatorDefault, (__bridge CFDataRef)(self.certificateData));
     CFStringRef commonName;
     SecCertificateCopyCommonName(certRef, &commonName);
     self.commonName = CFBridgingRelease(commonName);
     CFRelease(certRef);
+}
+
++ (NSArray *)keychainsIdenities {
+    NSMutableArray *keychainsIdentities = [NSMutableArray array];
+    
+    NSMutableDictionary *query = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                  (__bridge id)kCFBooleanTrue, (__bridge id)kSecReturnRef,
+                                  (__bridge id)kSecMatchLimitAll, (__bridge id)kSecMatchLimit,
+                                  kCFNull, kSecMatchValidOnDate,
+                                  @"iPhone", kSecMatchSubjectStartsWith,
+                                  nil];
+
+    NSArray *secItemClasses = [NSArray arrayWithObjects:
+//                               (__bridge id)kSecClassGenericPassword,
+//                               (__bridge id)kSecClassInternetPassword,
+//                               (__bridge id)kSecClassCertificate,
+//                               (__bridge id)kSecClassKey,
+                               (__bridge id)kSecClassIdentity,
+                               nil];
+
+    for (id secItemClass in secItemClasses) {
+        [query setObject:secItemClass forKey:(__bridge id)kSecClass];
+
+        CFTypeRef result = NULL;
+        SecItemCopyMatching((__bridge CFDictionaryRef)query, &result);
+
+        if (result) {
+            NSArray *identityArray = (__bridge NSArray *)(result);
+            for (id obj in identityArray) {
+                SecIdentityRef identityRef = (__bridge SecIdentityRef)(obj);
+                SecCertificateRef certKeychains = NULL;
+                SecIdentityCopyCertificate(identityRef, &certKeychains);
+                if (certKeychains != NULL) {
+                    NSData *keychainCertData = (NSData *)CFBridgingRelease(SecCertificateCopyData(certKeychains));
+                    SigningIdentity *si = [[SigningIdentity alloc] initWithProvision:nil certificateData:keychainCertData];
+                    if ([si.commonName hasPrefix:@"iPhone Developer"] || [si.commonName hasPrefix:@"iPhone Distribution"]) {
+                        [keychainsIdentities addObject:si];
+                    }
+                    CFRelease(certKeychains);
+                }
+            }
+        }
+
+
+        if (result != NULL) CFRelease(result);
+    }
+    return keychainsIdentities;
 }
 @end
 

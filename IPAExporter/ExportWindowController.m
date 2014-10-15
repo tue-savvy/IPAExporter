@@ -109,6 +109,8 @@
 - (void)buildListIdentity {
     [self.popupMenu removeAllItems];
     
+    NSArray *keychainsIdentities = [SigningIdentity keychainsIdenities];
+    
     NSString *library = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
     
     NSString *mobileProvisioningFolder = [library stringByAppendingPathComponent:@"MobileDevice/Provisioning Profiles"];
@@ -125,10 +127,20 @@
         [self.provisioningArray addObject:provisioning];
     }
     [self.provisioningArray sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(caseInsensitiveCompare:)]]];
+    NSString *archiveBundleID = self.archive.bundleID;
+    
     for (Provisioning *provision in self.provisioningArray) {
         //Ignore expired provisioning
         if (provision.isExpired) continue;
         
+        if ([provision.applicationIdentifier hasSuffix:@"*"]) {//wildcast appid
+            NSString *provisionAppPrefix = [provision.applicationIdentifier substringToIndex:provision.applicationIdentifier.length - 1];
+            if (![archiveBundleID hasPrefix:provisionAppPrefix] && provisionAppPrefix.length > 0) {
+                continue;
+            }
+        } else if (![provision.applicationIdentifier isEqual:archiveBundleID]) {
+            continue;
+        }
         
         NSMenuItem *item = [[NSMenuItem alloc] init];
         item.title = [NSString stringWithFormat:@"%@ (%@)", provision.name, provision.applicationIdentifier];
@@ -136,6 +148,16 @@
         [item setEnabled:NO];
         [self.popupMenu addItem:item];
         for (SigningIdentity *identity in provision.signingIdentities) {
+            BOOL matchInKeychains = NO;
+            for (SigningIdentity *keyhainsIdentity in keychainsIdentities) {
+                if ([identity.certificateData isEqualToData:keyhainsIdentity.certificateData]) {
+                    matchInKeychains = YES;
+                    break;
+                }
+            }
+            //The signing identity no found in keychains. So we skip it
+            if (!matchInKeychains) continue;
+            
             NSMenuItem *itemIdentity = [[NSMenuItem alloc] init];
             itemIdentity.title = identity.commonName;
             itemIdentity.indentationLevel = 1;
@@ -196,6 +218,7 @@
 }
 - (IBAction)reloadIdentities:(id)sender {
     [self buildListIdentity];
+    [self lookupBestIdentity];
 }
 - (void)lookupBestIdentity {
     

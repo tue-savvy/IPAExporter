@@ -21,6 +21,8 @@
 		81AB04F119E855A2002C4964 /* XcodeArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AB04F019E855A2002C4964 /* XcodeArchive.m */; };
 		81AC548519E90AC1004C2C3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81AC548419E90AC1004C2C3C /* Images.xcassets */; };
 		81AC548819E94A23004C2C3C /* DirectoryWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 81AC548719E94A23004C2C3C /* DirectoryWatcher.m */; };
+		81D2A1F519EF36B00006F5D2 /* ArchiveWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A1F319EF36B00006F5D2 /* ArchiveWindowController.m */; };
+		81D2A1F619EF36B00006F5D2 /* ArchiveWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A1F419EF36B00006F5D2 /* ArchiveWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,9 @@
 		81AC548719E94A23004C2C3C /* DirectoryWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectoryWatcher.m; sourceTree = "<group>"; };
 		81AC548919E9534E004C2C3C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
 		81AC548A19E9534E004C2C3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		81D2A1F219EF36B00006F5D2 /* ArchiveWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchiveWindowController.h; sourceTree = "<group>"; };
+		81D2A1F319EF36B00006F5D2 /* ArchiveWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchiveWindowController.m; sourceTree = "<group>"; };
+		81D2A1F419EF36B00006F5D2 /* ArchiveWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArchiveWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +164,9 @@
 			children = (
 				81AB04CD19E83963002C4964 /* AppDelegate.h */,
 				81AB04CE19E83963002C4964 /* AppDelegate.m */,
+				81D2A1F219EF36B00006F5D2 /* ArchiveWindowController.h */,
+				81D2A1F319EF36B00006F5D2 /* ArchiveWindowController.m */,
+				81D2A1F419EF36B00006F5D2 /* ArchiveWindowController.xib */,
 				814A0F6719E8C44F0023B1A5 /* ExportWindowController.h */,
 				814A0F6819E8C4500023B1A5 /* ExportWindowController.m */,
 				814A0F6919E8C4500023B1A5 /* ExportWindowController.xib */,
@@ -261,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				814A0F7019E8E4CF0023B1A5 /* Export.sh in Resources */,
+				81D2A1F619EF36B00006F5D2 /* ArchiveWindowController.xib in Resources */,
 				81AC548519E90AC1004C2C3C /* Images.xcassets in Resources */,
 				814A0F6B19E8C4500023B1A5 /* ExportWindowController.xib in Resources */,
 				81AB04D419E83963002C4964 /* MainMenu.xib in Resources */,
@@ -283,6 +292,7 @@
 			files = (
 				81AB04EB19E84762002C4964 /* Provisioning.m in Sources */,
 				814A0F6A19E8C4500023B1A5 /* ExportWindowController.m in Sources */,
+				81D2A1F519EF36B00006F5D2 /* ArchiveWindowController.m in Sources */,
 				81AB04EE19E85376002C4964 /* TableAppCellView.m in Sources */,
 				81AB04CF19E83963002C4964 /* AppDelegate.m in Sources */,
 				81AB04CC19E83963002C4964 /* main.m in Sources */,

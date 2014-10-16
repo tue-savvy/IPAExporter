@@ -1,6 +1,13 @@
 IPA Exporter
 ================
 
+New version 1.1 include:
+- Improve Keychains Identities matching
+- Support Xcode 6 Plug-In for Quick Access the application.
+
+Version 1.0:
+- Initial version support export / sign IPA from Xcode archive.
+
 The Mac Application used to export IPA from Xcode Archive. This app require Xcode command line tools is installed.
 
 ![Screen Shot](/Screenshot/1.png?raw=true "Main Screen")

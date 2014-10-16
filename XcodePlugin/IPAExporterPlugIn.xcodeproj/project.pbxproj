@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		81D2A1E219EF31630006F5D2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D2A1E119EF31630006F5D2 /* AppKit.framework */; };
 		81D2A1E419EF31630006F5D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D2A1E319EF31630006F5D2 /* Foundation.framework */; };
-		81D2A1E919EF31630006F5D2 /* IPAExporterPlugIn.xcscheme in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A1E819EF31630006F5D2 /* IPAExporterPlugIn.xcscheme */; };
 		81D2A1EC19EF31630006F5D2 /* IPAExporterPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A1EB19EF31630006F5D2 /* IPAExporterPlugIn.m */; };
 		81D2A20619EF3B8C0006F5D2 /* ArchiveWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D2A20119EF3B8C0006F5D2 /* ArchiveWindowController.m */; };
 		81D2A20719EF3B8C0006F5D2 /* ArchiveWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81D2A20219EF3B8C0006F5D2 /* ArchiveWindowController.xib */; };
@@ -211,7 +210,6 @@
 			files = (
 				81D2A20919EF3B8C0006F5D2 /* ExportWindowController.xib in Resources */,
 				81D2A20719EF3B8C0006F5D2 /* ArchiveWindowController.xib in Resources */,
-				81D2A1E919EF31630006F5D2 /* IPAExporterPlugIn.xcscheme in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

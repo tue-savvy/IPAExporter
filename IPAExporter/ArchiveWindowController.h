@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ArchiveWindowController : NSWindowController
-
+@property (strong, nonatomic) NSBundle *plugInBundle;
 @end

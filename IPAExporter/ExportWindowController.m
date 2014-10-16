@@ -172,7 +172,8 @@
 }
 - (void)runExportTaskWithCompletion:(dispatch_block_t)completion {
     SigningIdentity *selectedIdentity = [self.popupButton selectedItem].representedObject;
-    NSString *exportCommand = [[NSBundle mainBundle] pathForResource:@"Export" ofType:@"sh"];
+    NSBundle *bundle = self.plugInBundle ? self.plugInBundle : [NSBundle mainBundle];
+    NSString *exportCommand = [bundle pathForResource:@"Export" ofType:@"sh"];
     NSString *appPath = self.archive.absoluteApplicationPath;
     NSString *desticationPath = self.destinationTextField.stringValue;
     NSString *provisionName = selectedIdentity.provision.path;

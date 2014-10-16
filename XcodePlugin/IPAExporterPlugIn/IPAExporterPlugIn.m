@@ -61,6 +61,7 @@ static IPAExporterPlugIn *sharedPlugin;
 {
     if (!self.archiveController) {
         self.archiveController = [[ArchiveWindowController alloc] initWithWindowNibName:@"ArchiveWindowController"];
+        self.archiveController.plugInBundle = self.bundle;
     }
     
     [self.archiveController.window makeKeyAndOrderFront:self];

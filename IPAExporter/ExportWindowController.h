@@ -10,4 +10,5 @@
 @class XcodeArchive;
 @interface ExportWindowController : NSWindowController
 @property (nonatomic, strong) XcodeArchive *archive;
+@property (strong, nonatomic) NSBundle *plugInBundle;
 @end

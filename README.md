@@ -1,6 +1,10 @@
 IPA Exporter
 ================
 
+NOTE: On Mac OSX 10.10. If you cannot export IPA file. Please try to add this into Build Settings:
+
+**Code Signing Resource Rule Path**: $(SDKROOT)/ResourceRules.plist
+
 New version 1.1 include:
 - Improve Keychains Identities matching
 - Support Xcode 6 Plug-In for Quick Access the application.
